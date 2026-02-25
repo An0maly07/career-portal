@@ -2216,6 +2216,10 @@ h1, h2, h3, h4 {
     gap: 20px;
     align-items: flex-start;
   }
+  .welcome-banner .welcome-text,
+  .welcome-banner .radial-stats {
+    width: 100%;
+  }
   .welcome-stats {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -3443,12 +3447,10 @@ h1, h2, h3, h4 {
 }
 
 /* Dashboard Welcome Row & Radial Stats */
+/* display:contents lifts children into the banner's flex context so
+   space-between distributes [text] [radial] [stats] with equal gaps */
 .welcome-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 24px;
+  display: contents;
 }
 
 .radial-stats {
