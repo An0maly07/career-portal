@@ -3460,13 +3460,14 @@ h1, h2, h3, h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .radial-stat span {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-secondary);
+  letter-spacing: 0.1px;
 }
 
 .circular-chart {
