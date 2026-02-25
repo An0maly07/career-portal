@@ -1847,10 +1847,10 @@ h1, h2, h3, h4 {
    =================================== */
 .chatbot-bubble {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
+  bottom: calc(var(--bottom-nav-height) + 16px);
+  right: 24px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: var(--gradient-primary);
   box-shadow: 0 4px 14px rgba(10, 102, 194, 0.4);
@@ -1859,7 +1859,7 @@ h1, h2, h3, h4 {
   justify-content: center;
   cursor: pointer;
   transition: all var(--transition-normal);
-  z-index: 2100; /* Higher than everything */
+  z-index: 2100;
 }
 
 .chatbot-bubble:hover {
@@ -1926,8 +1926,8 @@ h1, h2, h3, h4 {
 
 .chatbot-window {
   position: fixed;
-  top: 80px;
-  right: 20px;
+  bottom: calc(var(--bottom-nav-height) + 80px);
+  right: 24px;
   width: 360px;
   max-height: 540px;
   background: var(--bg-card);
@@ -2245,7 +2245,7 @@ h1, h2, h3, h4 {
   .chatbot-window {
     width: calc(100vw - 32px);
     right: 16px;
-    bottom: 80px;
+    bottom: calc(var(--bottom-nav-height) + 76px);
   }
   .career-grid {
     grid-template-columns: 1fr;
