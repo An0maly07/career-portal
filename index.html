@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerLaunch — Interview Practice & Skill Mapping Portal</title>
+    <meta name="description" content="AI-powered career guidance platform with virtual interview practice, skill mapping, YouTube learning, and interactive quizzes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div id="particles-bg"></div>
+
+    <!-- ==================== LOGIN PAGE ==================== -->
+    <section id="login-page" class="page active">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-logo">
+                    <div class="logo-icon">💼</div>
+                    <h1><span class="gradient-text">Career</span>Launch</h1>
+                    <p class="tagline">Your Professional Career Navigator</p>
+                </div>
+                <div id="login-form-container">
+                    <form id="login-form" autocomplete="off">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="login-btn">
+                            <span>Sign In</span>
+                            <div class="btn-loader hidden"></div>
+                        </button>
+                    </form>
+                    <p class="switch-auth">Don't have an account? <a href="#" id="show-signup">Create one</a></p>
+                </div>
+                <div id="signup-form-container" class="hidden">
+                    <form id="signup-form" autocomplete="off">
+                        <div class="form-group">
+                            <label for="signup-name">Full Name</label>
+                            <input type="text" id="signup-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email</label>
+                            <input type="email" id="signup-email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" placeholder="••••••••" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-interest">What interests you most?</label>
+                            <select id="signup-interest" required>
+                                <option value="">Select your interest...</option>
+                                <option value="web">Web Development</option>
+                                <option value="data">Data Science</option>
+                                <option value="ai">AI & Machine Learning</option>
+                                <option value="cyber">Cybersecurity</option>
+                                <option value="mobile">Mobile Development</option>
+                                <option value="cloud">Cloud Computing</option>
+                                <option value="unsure">I'm not sure yet</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="signup-btn">
+                            <span>Create Account</span>
+                            <div class="btn-loader hidden"></div>
+                        </button>
+                    </form>
+                    <p class="switch-auth">Already have an account? <a href="#" id="show-login">Sign In</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sidebar (Left) -->
+    <aside class="app-sidebar">
+        <div class="sidebar-header">
+            <div class="user-profile-large" id="sidebar-profile-img">
+                <img src="https://ui-avatars.com/api/?name=Test+User&background=0a66c2&color=fff" alt="Profile">
+            </div>
+            <div class="welcome-section">
+                <span class="welcome-text">Welcome back,</span>
+                <h2 id="sidebar-user-name">Test User</h2>
+            </div>
+        </div>
+
+        <div class="sidebar-content">
+            <div class="notifications-panel">
+                <div class="panel-header">
+                    <h3><i data-lucide="bell"></i> Notifications</h3>
+                    <span class="notif-count">2</span>
+                </div>
+                <div class="notif-list">
+                    <div class="notif-item">
+                        <i data-lucide="star" class="notif-icon"></i>
+                        <div class="notif-body">
+                            <p>New skill recommended: <strong>React Native</strong></p>
+                            <small>2 hours ago</small>
+                        </div>
+                    </div>
+                    <div class="notif-item unread">
+                        <i data-lucide="award" class="notif-icon"></i>
+                        <div class="notif-body">
+                            <p>You're 80% through <strong>Web Dev</strong>!</p>
+                            <small>5 hours ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <button class="btn btn-ghost btn-full" onclick="Auth.logout()">
+                <i data-lucide="log-out"></i> Logout
+            </button>
+        </div>
+    </aside>
+
+    <div class="main-wrapper">
+        <!-- Minimal Top Header -->
+        <header class="minimal-header">
+            <div class="brand">
+                <span class="logo-text">CareerLaunch</span>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn search-trigger"><i data-lucide="search"></i></button>
+                <div class="user-avatar-small" id="header-avatar" onclick="App.navigate('progress-page')">
+                    <img src="https://ui-avatars.com/api/?name=Test+User&background=0a66c2&color=fff" alt="T">
+                </div>
+            </div>
+        </header>
+
+        <main class="content-area">
+    <!-- ==================== DASHBOARD ==================== -->
+    <section id="dashboard-page" class="page">
+        <div class="dashboard-content">
+            <div class="welcome-banner">
+                <div class="welcome-row">
+                    <div class="welcome-text">
+                        <h2>Welcome back, <span id="welcome-name" class="gradient-text">User</span>!</h2>
+                        <p>Your career journey is <b><span id="overall-status-text">moving fast</span></b>. Keep up the great work!</p>
+                    </div>
+                    <div class="radial-stats">
+                        <div class="radial-stat">
+                            <svg viewBox="0 0 36 36" class="circular-chart primary">
+                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle" id="radial-main" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <text x="18" y="20.35" class="percentage" id="radial-main-text">0%</text>
+                            </svg>
+                            <span>Total Progress</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="welcome-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-skills">0</div>
+                        <div class="stat-label">Skills Learned</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-videos">0</div>
+                        <div class="stat-label">Videos Watched</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-quizzes">0</div>
+                        <div class="stat-label">Quizzes Passed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-interviews">0</div>
+                        <div class="stat-label">Interviews Done</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dash-card" id="dash-continue">
+                    <h3><i data-lucide="book-open"></i> Continue Learning</h3>
+                    <div id="continue-learning-content">
+                        <p class="empty-state">Start exploring career paths to begin your journey!</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="App.navigate('careers-page')">Explore Careers →</button>
+                </div>
+
+                <div class="dash-card" id="dash-recommended">
+                    <h3><i data-lucide="target"></i> Recommended For You</h3>
+                    <div id="recommended-content">
+                        <p class="empty-state">Tell our AI assistant about your goals to get recommendations!</p>
+                    </div>
+                </div>
+
+                <div class="dash-card" id="dash-interview-prep">
+                    <h3><i data-lucide="mic"></i> Interview Readiness</h3>
+                    <div id="interview-readiness-content">
+                        <div class="readiness-meter">
+                            <div class="readiness-bar" id="readiness-bar" style="width: 0%"></div>
+                        </div>
+                        <p class="readiness-text">Complete skills and quizzes to improve your interview readiness!</p>
+                    </div>
+                    <button class="btn btn-secondary" onclick="App.navigate('interview-page')">Practice Now →</button>
+                </div>
+
+                <div class="dash-card" id="dash-achievements">
+                    <h3><i data-lucide="award"></i> Achievements</h3>
+                    <div id="achievements-content" class="achievements-grid">
+                        <div class="achievement locked" title="Watch your first video">
+                            <i data-lucide="video"></i>
+                            <small>First Video</small>
+                        </div>
+                        <div class="achievement locked" title="Pass your first quiz">
+                            <i data-lucide="check-square"></i>
+                            <small>Quiz Master</small>
+                        </div>
+                        <div class="achievement locked" title="Complete an interview">
+                            <i data-lucide="mic-2"></i>
+                            <small>Interviewer</small>
+                        </div>
+                        <div class="achievement locked" title="Complete a full skill path">
+                            <i data-lucide="medal"></i>
+                            <small>Skill Pro</small>
+                        </div>
+                        <div class="achievement locked" title="Watch 20 videos">
+                            <i data-lucide="tv"></i>
+                            <small>Binge Learner</small>
+                        </div>
+                        <div class="achievement locked" title="Pass 5 quizzes">
+                            <i data-lucide="brain"></i>
+                            <small>Brain Power</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MY LEARNING PAGE ==================== -->
+    <section id="learning-page" class="page">
+        <div class="page-content">
+            <div class="page-header">
+                <h2>My Learning</h2>
+                <p>All your active courses and progress in one place</p>
+            </div>
+            <div id="my-learning-content" class="my-learning-grid">
+                <!-- Filled by app.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROGRESS PAGE ==================== -->
+    <section id="progress-page" class="page">
+        <div class="page-content">
+            <div class="page-header">
+                <h2>Your Progress</h2>
+                <p>Track your learning journey across all career paths</p>
+            </div>
+
+            <!-- Overall Progress Bar -->
+            <div class="overall-progress-card">
+                <div class="overall-progress-header">
+                    <h3>Overall Learning Progress</h3>
+                    <span class="overall-percent" id="overall-percent">0%</span>
+                </div>
+                <div class="overall-progress-bar">
+                    <div class="overall-progress-fill" id="overall-progress-fill" style="width:0%"></div>
+                </div>
+                <div class="progress-milestones" id="progress-milestones"></div>
+            </div>
+
+            <!-- Per-Career Progress Breakdown -->
+            <div id="career-progress-breakdown" class="career-progress-list">
+                <!-- Filled by progress.js -->
+            </div>
+
+            <!-- Skill Tracker Heat Map -->
+            <div class="progress-section-label">Activity Tracker</div>
+            <div id="activity-tracker" class="activity-grid">
+                <!-- Filled by progress.js -->
+            </div>
+
+            <!-- Stats Row -->
+            <div class="progress-stats-row">
+                <div class="progress-stat-box">
+                    <span class="psb-icon">📹</span>
+                    <div class="psb-number" id="ps-videos">0</div>
+                    <div class="psb-label">Videos watched</div>
+                </div>
+                <div class="progress-stat-box">
+                    <span class="psb-icon">⚡</span>
+                    <div class="psb-number" id="ps-skills">0</div>
+                    <div class="psb-label">Skills completed</div>
+                </div>
+                <div class="progress-stat-box">
+                    <span class="psb-icon">🧠</span>
+                    <div class="psb-number" id="ps-quizzes">0</div>
+                    <div class="psb-label">Quizzes passed</div>
+                </div>
+                <div class="progress-stat-box">
+                    <span class="psb-icon">🎤</span>
+                    <div class="psb-number" id="ps-interviews">0</div>
+                    <div class="psb-label">Interviews done</div>
+                </div>
+                <div class="progress-stat-box">
+                    <span class="psb-icon">🏆</span>
+                    <div class="psb-number" id="ps-achievements">0</div>
+                    <div class="psb-label">Achievements</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CAREER PATHS PAGE ==================== -->
+    <section id="careers-page" class="page">
+        <div class="page-content">
+            <div class="page-header">
+                <h2>Career Path Explorer</h2>
+                <p>Choose a career path and master the skills you need to succeed</p>
+            </div>
+            <div id="career-paths-grid" class="career-grid">
+                <!-- Filled by careers.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CAREER DETAIL PAGE ==================== -->
+    <section id="career-detail-page" class="page">
+        <div class="page-content">
+            <div class="career-detail-header">
+                <button class="btn btn-outline btn-back" id="back-to-careers">← Back to Careers</button>
+                <div class="career-detail-info">
+                    <span class="career-detail-icon" id="career-detail-icon">💻</span>
+                    <div>
+                        <h2 id="career-detail-title">Career Path</h2>
+                        <p id="career-detail-desc">Description</p>
+                    </div>
+                </div>
+                <!-- Career-level progress bar -->
+                <div class="career-overview-progress">
+                    <div class="cop-labels">
+                        <span>Path Progress</span>
+                        <span id="cop-percent">0%</span>
+                    </div>
+                    <div class="cop-bar">
+                        <div class="cop-fill" id="cop-fill" style="width:0%"></div>
+                    </div>
+                    <div class="cop-steps" id="cop-steps"></div>
+                </div>
+            </div>
+            <div class="skill-tree" id="skill-tree">
+                <!-- Filled by careers.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SKILL LEARNING PAGE ==================== -->
+    <section id="skill-page" class="page">
+        <div class="page-content">
+            <div class="skill-header">
+                <button class="btn btn-outline btn-back" id="back-to-career">← Back to Skills</button>
+                <h2 id="skill-title">Skill Name</h2>
+                <div class="skill-progress-bar">
+                    <div class="skill-progress-fill" id="skill-progress-fill"></div>
+                </div>
+                <span id="skill-progress-text" class="progress-text">0% Complete</span>
+            </div>
+
+            <!-- Tab Bar for skill page -->
+            <div class="skill-tabs">
+                <button class="skill-tab active" data-tab="videos-tab">📹 Videos</button>
+                <button class="skill-tab" data-tab="notes-tab">📝 Notes</button>
+                <button class="skill-tab" data-tab="discuss-tab">💬 Discussion</button>
+                <button class="skill-tab" data-tab="quiz-inline-tab">🧠 Quiz</button>
+            </div>
+
+            <!-- Videos Tab -->
+            <div id="videos-tab" class="skill-tab-content active">
+                <div class="skill-content-grid">
+                    <div class="video-section">
+                        <div class="video-player" id="video-player">
+                            <div class="video-placeholder">
+                                <span>🎬</span>
+                                <p>Select a video to start learning</p>
+                            </div>
+                        </div>
+                        <h3 id="current-video-title" class="video-title">Select a video</h3>
+                        <!-- Related Topics under video -->
+                        <div id="related-topics" class="related-topics hidden">
+                            <div class="related-topics-label">🔗 Related Topics</div>
+                            <div class="related-tags" id="related-tags-list"></div>
+                        </div>
+                    </div>
+                    <div class="video-list-section">
+                        <h3>📋 Video Lessons</h3>
+                        <div id="video-list" class="video-list">
+                            <!-- Filled by videos.js -->
+                        </div>
+                        <div id="quiz-trigger" class="quiz-trigger hidden">
+                            <div class="quiz-trigger-content">
+                                <span>🧠</span>
+                                <p>You've watched enough videos! Time for a quiz!</p>
+                                <button class="btn btn-primary" id="start-quiz-btn">Take Quiz →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes Tab -->
+            <div id="notes-tab" class="skill-tab-content hidden">
+                <div class="notes-panel">
+                    <div class="notes-header">
+                        <h3>📝 My Learning Notes</h3>
+                        <button class="btn btn-small btn-primary" id="save-notes-btn">Save Notes</button>
+                    </div>
+                    <textarea id="skill-notes" class="notes-textarea" placeholder="Write your notes, key concepts, or summaries here..."></textarea>
+                    <div class="notes-tips">
+                        <strong>💡 Tips:</strong> Write down key concepts, code snippets, and questions you have. Notes are saved per skill.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discussion Tab -->
+            <div id="discuss-tab" class="skill-tab-content hidden">
+                <div class="discuss-panel">
+                    <div class="discuss-header">
+                        <h3>💬 Skill Discussion</h3>
+                        <span class="discuss-subtitle">Ask questions and share insights with learners</span>
+                    </div>
+                    <div id="discuss-messages" class="discuss-messages">
+                        <!-- Filled by community module -->
+                    </div>
+                    <div class="discuss-input-row">
+                        <div class="profile-avatar small" id="discuss-avatar">U</div>
+                        <input type="text" id="discuss-input" class="discuss-input" placeholder="Ask a question or share a tip...">
+                        <button class="btn btn-primary btn-small" id="discuss-send">Post</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inline Quiz Tab -->
+            <div id="quiz-inline-tab" class="skill-tab-content hidden">
+                <div id="inline-quiz-container" class="inline-quiz-container">
+                    <div class="inline-quiz-prompt">
+                        <span style="font-size:48px">🧠</span>
+                        <h3>Ready to test your knowledge?</h3>
+                        <p>Complete a few videos first, then take the quiz to unlock this skill.</p>
+                        <button class="btn btn-primary btn-large" id="inline-start-quiz-btn">Start Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== QUIZ PAGE ==================== -->
+    <section id="quiz-page" class="page">
+        <div class="page-content">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h2 id="quiz-title">📝 Skill Quiz</h2>
+                    <div class="quiz-progress">
+                        <span id="quiz-question-num">1</span> / <span id="quiz-total">5</span>
+                    </div>
+                </div>
+                <!-- Progress bar for quiz -->
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="quiz-progress-fill" style="width:20%"></div>
+                </div>
+                <div class="quiz-body">
+                    <p class="quiz-question" id="quiz-question">Loading question...</p>
+                    <div class="quiz-options" id="quiz-options">
+                        <!-- Filled by quiz.js -->
+                    </div>
+                </div>
+                <div class="quiz-footer">
+                    <button class="btn btn-primary" id="quiz-next-btn" disabled>Next Question →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== QUIZ RESULTS PAGE ==================== -->
+    <section id="quiz-results-page" class="page">
+        <div class="page-content">
+            <div class="quiz-results-container">
+                <div id="quiz-results-icon" class="results-icon">🎉</div>
+                <h2 id="quiz-results-title">Quiz Complete!</h2>
+                <div class="results-score">
+                    <div class="score-circle" id="score-circle">
+                        <span id="score-percent">80%</span>
+                    </div>
+                </div>
+                <p id="quiz-results-message">Great job!</p>
+                <div class="results-actions" id="quiz-results-actions">
+                    <button class="btn btn-ghost" id="quiz-retry-btn">Try Again</button>
+                    <button class="btn btn-secondary" id="quiz-continue-btn">Continue Learning →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== INTERVIEW PRACTICE PAGE ==================== -->
+    <section id="interview-page" class="page">
+        <div class="page-content">
+            <div class="page-header">
+                <h2>Interview Practice</h2>
+                <p>Practice with AI-powered feedback tailored to your career path</p>
+            </div>
+
+            <div id="interview-setup" class="interview-setup">
+                <h3>Choose Interview Type</h3>
+                <div class="interview-types-grid">
+                    <div class="interview-type-card" data-type="behavioral">
+                        <span class="type-icon">🧠</span>
+                        <h4>Behavioral</h4>
+                        <p>Tell me about a time when...</p>
+                    </div>
+                    <div class="interview-type-card" data-type="technical">
+                        <span class="type-icon">💻</span>
+                        <h4>Technical</h4>
+                        <p>Coding & system design questions</p>
+                    </div>
+                    <div class="interview-type-card" data-type="hr">
+                        <span class="type-icon">🤝</span>
+                        <h4>HR Round</h4>
+                        <p>Salary, culture fit, expectations</p>
+                    </div>
+                </div>
+
+                <h3>Select Career Focus</h3>
+                <div id="interview-career-select" class="interview-career-grid">
+                    <!-- Filled by interview.js -->
+                </div>
+
+                <button class="btn btn-primary btn-large" id="start-interview-btn" disabled>
+                    🎙️ Start Interview
+                </button>
+            </div>
+
+            <div id="interview-session" class="interview-session hidden">
+                <div class="interview-header">
+                    <div class="interviewer-avatar">
+                        <span>🤖</span>
+                    </div>
+                    <div class="interviewer-info">
+                        <h3>AI Interviewer</h3>
+                        <span id="interview-type-label">Behavioral Interview</span>
+                    </div>
+                    <div class="interview-progress">
+                        Question <span id="interview-q-num">1</span> of <span id="interview-q-total">5</span>
+                    </div>
+                </div>
+
+                <!-- Interview progress bar -->
+                <div class="interview-prog-bar-wrap">
+                    <div class="interview-prog-bar" id="interview-prog-bar" style="width:20%"></div>
+                </div>
+
+                <div class="interview-chat" id="interview-chat">
+                    <!-- Filled by interview.js -->
+                </div>
+
+                <div class="interview-input">
+                    <textarea id="interview-answer" placeholder="Type your answer here... Be detailed and give examples!" rows="4"></textarea>
+                    <button class="btn btn-primary" id="submit-answer-btn">
+                        Submit Answer 📤
+                    </button>
+                </div>
+            </div>
+
+            <div id="interview-results" class="interview-results hidden">
+                <div class="interview-score-card">
+                    <h2>Interview Complete! 🎉</h2>
+                    <div class="interview-score-circle" id="interview-score-circle">
+                        <span id="interview-score-value">0</span>
+                        <small>/100</small>
+                    </div>
+                    <div id="interview-feedback-list" class="feedback-list">
+                        <!-- Filled by interview.js -->
+                    </div>
+                    <div class="results-actions">
+                        <button class="btn btn-primary" id="interview-retry-btn">Try Another Interview</button>
+                        <button class="btn btn-secondary" onclick="App.navigate('dashboard-page')">Back to Dashboard</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COMMUNITY PAGE ==================== -->
+    <section id="community-page" class="page">
+        <div class="page-content">
+            <div class="page-header">
+                <h2>Community</h2>
+                <p>Connect, ask questions, and share your learning journey</p>
+            </div>
+            <div class="community-layout">
+                <!-- Feed -->
+                <div class="community-feed">
+                    <div class="community-post-box">
+                        <div class="profile-avatar" id="community-avatar">U</div>
+                        <input type="text" id="community-post-input" class="community-post-input" placeholder="Share a tip, question, or win! 🎉">
+                        <button class="btn btn-primary btn-small" id="community-post-btn">Post</button>
+                    </div>
+                    <div id="community-posts" class="community-posts">
+                        <!-- Filled by community.js -->
+                    </div>
+                </div>
+                <!-- Sidebar -->
+                <div class="community-sidebar">
+                    <div class="community-sidebar-card">
+                        <h4>🔥 Trending Skills</h4>
+                        <div class="trending-skills" id="trending-skills"></div>
+                    </div>
+                    <div class="community-sidebar-card">
+                        <h4>🏆 Leaderboard</h4>
+                        <div id="leaderboard-list" class="leaderboard-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== AI CHATBOT ==================== -->
+    <div id="chatbot-bubble" class="chatbot-bubble">
+        <span class="chatbot-icon">🤖</span>
+        <span class="chatbot-badge hidden" id="chatbot-badge">1</span>
+    </div>
+
+    <div id="chatbot-window" class="chatbot-window hidden">
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <span>🤖</span>
+                <div>
+                    <h4>CareerBot AI</h4>
+                    <small>Your professional career advisor</small>
+                </div>
+            </div>
+            <button class="chatbot-close" id="chatbot-close">✕</button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <!-- Filled by chatbot.js -->
+        </div>
+        <div class="chatbot-quick-actions" id="chatbot-quick-actions">
+            <button class="quick-action" data-msg="I want to get a job">🎯 Get a Job</button>
+            <button class="quick-action" data-msg="Help me learn new skills">📚 Learn Skills</button>
+            <button class="quick-action" data-msg="I need interview practice">🎤 Interview Prep</button>
+            <button class="quick-action" data-msg="What career is right for me?">🤔 Career Advice</button>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbot-input" placeholder="Just tell me what you need..." autocomplete="off">
+            <button class="chatbot-send" id="chatbot-send">➤</button>
+        </div>
+    </div>
+
+    <!-- ==================== TOAST NOTIFICATIONS ==================== -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- ==================== CONFETTI CANVAS ==================== -->
+    <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+    <div id="cert-overlay" class="modal-overlay hidden"></div>
+    <script src="js/auth.js"></script>
+    <script src="js/careers.js"></script>
+    <script src="js/videos.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/interview.js"></script>
+    <script src="js/chatbot.js"></script>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-link active" data-page="dashboard-page">
+                <i data-lucide="home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-link" data-page="careers-page">
+                <i data-lucide="compass"></i>
+                <span>Paths</span>
+            </a>
+            <a href="#" class="nav-link" data-page="learning-page">
+                <i data-lucide="book-open"></i>
+                <span>Learning</span>
+            </a>
+            <a href="#" class="nav-link" data-page="progress-page">
+                <i data-lucide="bar-chart-2"></i>
+                <span>Stats</span>
+            </a>
+            <a href="#" class="nav-link" data-page="interview-page">
+                <i data-lucide="mic"></i>
+                <span>Interview</span>
+            </a>
+        </nav>
+    </div>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
