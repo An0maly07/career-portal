@@ -276,7 +276,7 @@ body {
 
 .notif-body small {
   color: var(--text-muted);
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .sidebar-footer {
@@ -424,7 +424,7 @@ h1, h2, h3, h4 {
   font-family: var(--font-primary);
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
 /* --- Page System --- */
@@ -587,9 +587,9 @@ h1, h2, h3, h4 {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
-  padding: 44px 40px;
+  padding: 40px;
   width: 100%;
-  max-width: 430px;
+  max-width: 440px;
   box-shadow: var(--shadow-card);
   animation: scaleIn 0.4s ease;
 }
@@ -607,18 +607,19 @@ h1, h2, h3, h4 {
 }
 
 .login-logo h1 {
-  font-size: 28px;
-  margin-bottom: 4px;
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 6px;
   color: var(--text-primary);
 }
 
 .tagline {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 14px;
 }
 
 .form-group {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .form-group label {
@@ -661,7 +662,7 @@ h1, h2, h3, h4 {
 
 .switch-auth {
   text-align: center;
-  margin-top: 18px;
+  margin-top: 16px;
   color: var(--text-secondary);
   font-size: 14px;
 }
@@ -786,7 +787,7 @@ h1, h2, h3, h4 {
    DASHBOARD
    =================================== */
 .dashboard-content {
-  padding: 24px 20px;
+  padding: 28px 24px;
   max-width: 1128px;
   margin: 0 auto;
 }
@@ -818,27 +819,30 @@ h1, h2, h3, h4 {
 }
 
 .welcome-text h2 {
-  font-size: 22px;
-  margin-bottom: 4px;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 6px;
 }
 
 .welcome-text p {
   color: var(--text-secondary);
   font-size: 14px;
+  line-height: 1.5;
 }
 
 .welcome-stats {
   display: flex;
-  gap: 12px;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .stat-card {
   text-align: center;
-  padding: 14px 20px;
+  padding: 16px 20px;
   background: var(--bg-primary);
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
-  min-width: 90px;
+  min-width: 96px;
   transition: box-shadow var(--transition-fast);
 }
 
@@ -848,30 +852,32 @@ h1, h2, h3, h4 {
 
 .stat-number {
   font-family: var(--font-primary);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
   color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 4px;
 }
 
 .stat-label {
   font-size: 11px;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.4px;
-  margin-top: 2px;
+  letter-spacing: 0.6px;
+  font-weight: 600;
 }
 
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+  gap: 20px;
 }
 
 .dash-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 24px 26px;
+  padding: 24px;
   box-shadow: var(--shadow-sm);
   animation: slideUp 0.4s ease;
   transition: all var(--transition-normal);
@@ -883,12 +889,14 @@ h1, h2, h3, h4 {
 }
 
 .dash-card h3 {
-  font-size: 16px;
-  margin-bottom: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
   color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 8px;
+  letter-spacing: -0.1px;
 }
 
 .empty-state {
@@ -965,32 +973,35 @@ h1, h2, h3, h4 {
    CAREER PATHS
    =================================== */
 .page-content {
-  padding: 80px 20px 32px;
+  padding: 80px 24px 40px;
   max-width: 1128px;
   margin: 0 auto;
 }
 
 .page-header {
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 32px;
   animation: slideUp 0.4s ease;
 }
 
 .page-header h2 {
   font-size: 28px;
+  font-weight: 800;
   margin-bottom: 8px;
   color: var(--text-primary);
+  letter-spacing: -0.3px;
 }
 
 .page-header p {
   color: var(--text-secondary);
   font-size: 15px;
+  opacity: 0.85;
 }
 
 .career-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
 .career-card {
@@ -1032,7 +1043,7 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .career-icon {
@@ -1055,8 +1066,9 @@ h1, h2, h3, h4 {
 .career-card p {
   color: var(--text-secondary);
   font-size: 13px;
-  margin-bottom: 16px;
-  line-height: 1.5;
+  margin-bottom: 14px;
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
 .career-skills-preview {
@@ -1067,13 +1079,14 @@ h1, h2, h3, h4 {
 }
 
 .skill-tag {
-  padding: 3px 10px;
+  padding: 4px 12px;
   background: var(--color-primary-light);
-  border: 1px solid rgba(10, 102, 194, 0.1);
+  border: 1px solid rgba(10, 102, 194, 0.15);
   border-radius: var(--radius-pill);
   font-size: 11px;
   color: var(--color-primary);
   font-weight: 600;
+  letter-spacing: 0.1px;
 }
 
 .career-card-progress {
@@ -1145,7 +1158,7 @@ h1, h2, h3, h4 {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 20px 22px;
+  padding: 20px 24px;
   cursor: pointer;
   transition: all var(--transition-normal);
   box-shadow: var(--shadow-sm);
@@ -1187,10 +1200,11 @@ h1, h2, h3, h4 {
 }
 
 .skill-node-progress {
-  height: 4px;
+  height: 5px;
   background: var(--border-light);
-  border-radius: 2px;
+  border-radius: 3px;
   overflow: hidden;
+  margin-top: 4px;
 }
 
 .skill-node-fill {
@@ -1238,8 +1252,9 @@ h1, h2, h3, h4 {
 
 .skill-content-grid {
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr 300px;
   gap: 20px;
+  align-items: start;
 }
 
 /* Video Player */
@@ -1315,7 +1330,7 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 12px;
+  padding: 10px 14px;
   border-radius: var(--radius-md);
   cursor: pointer;
   border: 1px solid transparent;
@@ -1352,9 +1367,10 @@ h1, h2, h3, h4 {
 }
 
 .video-item-title {
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--text-primary);
   line-height: 1.4;
+  font-weight: 500;
 }
 
 /* Quiz Trigger */
@@ -1418,12 +1434,12 @@ h1, h2, h3, h4 {
 }
 
 .quiz-body {
-  padding: 30px;
+  padding: 28px 32px;
 }
 
 .quiz-question {
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 24px;
   line-height: 1.5;
@@ -1436,7 +1452,7 @@ h1, h2, h3, h4 {
 }
 
 .quiz-option {
-  padding: 14px 18px;
+  padding: 14px 20px;
   border: 1.5px solid var(--border-color);
   border-radius: var(--radius-md);
   cursor: pointer;
@@ -1538,19 +1554,19 @@ h1, h2, h3, h4 {
    INTERVIEW PRACTICE
    =================================== */
 .interview-setup h3 {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 14px;
-  margin-top: 24px;
+  letter-spacing: 0.8px;
+  margin-bottom: 16px;
+  margin-top: 32px;
 }
 
 .interview-types-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 16px;
   margin-bottom: 8px;
 }
 
@@ -1558,7 +1574,7 @@ h1, h2, h3, h4 {
   background: var(--bg-card);
   border: 1.5px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 22px 16px;
+  padding: 24px 20px;
   cursor: pointer;
   text-align: center;
   transition: all var(--transition-normal);
@@ -1571,9 +1587,11 @@ h1, h2, h3, h4 {
   transform: translateY(-2px);
 }
 
-.interview-type-card.active {
+.interview-type-card.active,
+.interview-type-card.selected {
   border-color: var(--color-primary);
   background: var(--color-primary-light);
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.12);
 }
 
 .type-icon {
@@ -1617,7 +1635,8 @@ h1, h2, h3, h4 {
   color: var(--color-primary);
 }
 
-.interview-career-option.active {
+.interview-career-option.active,
+.interview-career-option.selected {
   border-color: var(--color-primary);
   background: var(--color-primary-light);
   color: var(--color-primary);
@@ -1683,34 +1702,48 @@ h1, h2, h3, h4 {
   gap: 14px;
 }
 
-.chat-bubble {
-  max-width: 75%;
+.chat-bubble,
+.chat-message {
+  max-width: 80%;
   padding: 12px 16px;
   border-radius: 12px;
   font-size: 14px;
   line-height: 1.5;
 }
 
-.chat-bubble.ai {
+.chat-bubble.ai,
+.chat-message.bot {
   background: var(--bg-primary);
   border: 1px solid var(--border-color);
   align-self: flex-start;
   border-bottom-left-radius: 4px;
 }
 
-.chat-bubble.user {
+.chat-bubble.user,
+.chat-message.user {
   background: var(--color-primary);
   color: white;
   align-self: flex-end;
   border-bottom-right-radius: 4px;
 }
 
-.chat-bubble.feedback {
+.chat-bubble.feedback,
+.chat-message.feedback {
   background: rgba(5, 118, 66, 0.08);
   border: 1px solid rgba(5, 118, 66, 0.2);
   align-self: flex-start;
   border-bottom-left-radius: 4px;
-  max-width: 85%;
+  max-width: 90%;
+  color: var(--text-primary);
+}
+
+.chat-message .sender {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  opacity: 0.7;
 }
 
 .interview-input {
@@ -2816,7 +2849,7 @@ h1, h2, h3, h4 {
 .my-learning-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
 .my-learning-card {
@@ -2912,7 +2945,7 @@ h1, h2, h3, h4 {
 .community-layout {
   display: grid;
   grid-template-columns: 1fr 300px;
-  gap: 20px;
+  gap: 24px;
   align-items: start;
 }
 
