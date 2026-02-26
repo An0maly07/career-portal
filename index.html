@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/styles.css">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- html2pdf.js for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
     <!-- Animated Background -->
@@ -625,6 +627,173 @@
         </div>
     </section>
 
+    <!-- ==================== RESUME BUILDER PAGE ==================== -->
+    <section id="resume-page" class="page">
+        <div class="resume-builder-layout">
+            <!-- Left Panel: Editor -->
+            <div class="resume-editor-panel">
+                <div class="resume-editor-header">
+                    <h2><i data-lucide="file-text"></i> Resume Builder</h2>
+                    <div class="resume-editor-actions">
+                        <button class="btn btn-outline btn-small" id="resume-clear-btn" title="Clear All">
+                            <i data-lucide="trash-2"></i> Clear
+                        </button>
+                        <button class="btn btn-primary btn-small" id="resume-export-btn" title="Export PDF">
+                            <i data-lucide="download"></i> Export PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Build Resume Button -->
+                <div class="resume-build-bar">
+                    <button class="btn btn-primary btn-large resume-build-btn" id="resume-build-btn">
+                        Build Resume
+                    </button>
+                </div>
+
+                <div class="resume-sections-list" id="resume-sections-list">
+                    <!-- Contact Info Section -->
+                    <div class="resume-section-block" data-section="contact">
+                        <div class="resume-section-header" data-toggle="contact">
+                            <div class="resume-section-drag" title="Drag to reorder">⠿</div>
+                            <h3>Contact Information</h3>
+                            <span class="resume-section-chevron"><i data-lucide="chevron-down"></i></span>
+                        </div>
+                        <div class="resume-section-body" id="section-contact">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" class="resume-input" data-field="fullName" placeholder="John Doe">
+                                </div>
+                                <div class="form-group">
+                                    <label>Job Title</label>
+                                    <input type="text" class="resume-input" data-field="jobTitle" placeholder="Software Engineer">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="resume-input" data-field="email" placeholder="john@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="tel" class="resume-input" data-field="phone" placeholder="+1 (555) 123-4567">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Location</label>
+                                    <input type="text" class="resume-input" data-field="location" placeholder="San Francisco, CA">
+                                </div>
+                                <div class="form-group">
+                                    <label>LinkedIn / Portfolio</label>
+                                    <input type="text" class="resume-input" data-field="website" placeholder="linkedin.com/in/johndoe">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Summary Section -->
+                    <div class="resume-section-block" data-section="summary">
+                        <div class="resume-section-header" data-toggle="summary">
+                            <div class="resume-section-drag" title="Drag to reorder">⠿</div>
+                            <h3>Professional Summary</h3>
+                            <span class="resume-section-chevron"><i data-lucide="chevron-down"></i></span>
+                        </div>
+                        <div class="resume-section-body" id="section-summary">
+                            <div class="form-group">
+                                <label>Summary</label>
+                                <textarea class="resume-input resume-textarea" data-field="summary" placeholder="Write a 2-3 sentence professional summary highlighting your experience, key skills, and career goals..." rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience Section -->
+                    <div class="resume-section-block" data-section="experience">
+                        <div class="resume-section-header" data-toggle="experience">
+                            <div class="resume-section-drag" title="Drag to reorder">⠿</div>
+                            <h3>Work Experience</h3>
+                            <span class="resume-section-chevron"><i data-lucide="chevron-down"></i></span>
+                        </div>
+                        <div class="resume-section-body" id="section-experience">
+                            <div id="experience-entries"></div>
+                            <button class="btn btn-outline btn-small resume-add-btn" data-add="experience">
+                                + Add Experience
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Education Section -->
+                    <div class="resume-section-block" data-section="education">
+                        <div class="resume-section-header" data-toggle="education">
+                            <div class="resume-section-drag" title="Drag to reorder">⠿</div>
+                            <h3>Education</h3>
+                            <span class="resume-section-chevron"><i data-lucide="chevron-down"></i></span>
+                        </div>
+                        <div class="resume-section-body" id="section-education">
+                            <div id="education-entries"></div>
+                            <button class="btn btn-outline btn-small resume-add-btn" data-add="education">
+                                + Add Education
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Skills Section -->
+                    <div class="resume-section-block" data-section="skills">
+                        <div class="resume-section-header" data-toggle="skills">
+                            <div class="resume-section-drag" title="Drag to reorder">⠿</div>
+                            <h3>Skills</h3>
+                            <span class="resume-section-chevron"><i data-lucide="chevron-down"></i></span>
+                        </div>
+                        <div class="resume-section-body" id="section-skills">
+                            <div class="form-group">
+                                <label>Skills (comma separated)</label>
+                                <input type="text" class="resume-input" data-field="skills" placeholder="JavaScript, Python, React, SQL, Git, AWS...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projects Section -->
+                    <div class="resume-section-block" data-section="projects">
+                        <div class="resume-section-header" data-toggle="projects">
+                            <div class="resume-section-drag" title="Drag to reorder">⠿</div>
+                            <h3>Projects</h3>
+                            <span class="resume-section-chevron"><i data-lucide="chevron-down"></i></span>
+                        </div>
+                        <div class="resume-section-body" id="section-projects">
+                            <div id="project-entries"></div>
+                            <button class="btn btn-outline btn-small resume-add-btn" data-add="projects">
+                                + Add Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Live Preview -->
+            <div class="resume-preview-panel">
+                <div class="resume-preview-toolbar">
+                    <span class="preview-label">Live Preview</span>
+                    <div class="template-selector">
+                        <button class="template-btn active" data-template="classic" title="Classic">Classic</button>
+                        <button class="template-btn" data-template="modern" title="Modern">Modern</button>
+                        <button class="template-btn" data-template="minimal" title="Minimal">Minimal</button>
+                    </div>
+                </div>
+                <div class="resume-preview-scroll">
+                    <div class="resume-preview-paper" id="resume-preview">
+                        <!-- Live preview rendered here by resume.js -->
+                        <div class="resume-empty-state">
+                            <i data-lucide="file-text" style="width:48px;height:48px;color:var(--text-muted)"></i>
+                            <h3>Your resume preview will appear here</h3>
+                            <p>Start filling in your details on the left to see your resume take shape in real-time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ==================== AI CHATBOT ==================== -->
     <div id="chatbot-bubble" class="chatbot-bubble">
         <span class="chatbot-icon">🤖</span>
@@ -673,6 +842,7 @@
     <script src="js/quiz.js"></script>
     <script src="js/interview.js"></script>
     <script src="js/chatbot.js"></script>
+    <script src="js/resume.js"></script>
         </main>
 
         <!-- Bottom Navigation -->
@@ -696,6 +866,10 @@
             <a href="#" class="nav-link" data-page="interview-page">
                 <i data-lucide="mic"></i>
                 <span>Interview</span>
+            </a>
+            <a href="#" class="nav-link" data-page="resume-page">
+                <i data-lucide="file-text"></i>
+                <span>Resume</span>
             </a>
         </nav>
     </div>

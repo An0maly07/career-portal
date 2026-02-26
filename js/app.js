@@ -116,6 +116,9 @@ const App = {
       this.renderMyLearning();
       if (window.Chatbot) setTimeout(() => Chatbot.showSuggestion("Keep track of your certificates here!"), 2000);
     }
+    if (pageId === "resume-page")    {
+      if (window.ResumeBuilder) ResumeBuilder.init();
+    }
 
     // Re-initialize icons for dynamic content
     if (window.lucide) {
